@@ -1,48 +1,44 @@
-# Comparing Ruby and Python Through Microframeworks  
-## Expressiveness vs. Explicitness in Small Web Applications
+# Pedagogical Trade-offs in Web Microframeworks: Ruby, Python, and JavaScript
+## Analyzing Expressiveness, Explicitness, and Structural Clarity
 
-This repository contains materials for a project created as part of the **IS_214 Principles of Programming Languages** course.  
-The goal is to explore how Ruby and Python express similar ideas when building simple web applications.
+This repository contains source code and materials for a project created as part of the IS_214 Principles of Programming Languages course.
+
+The project explores the pedagogical implications of choosing a programming language for introductory web development. It moves beyond general syntax comparisons to analyze how different language philosophies: Ruby, Python, and JavaScript, impact the cognitive load and syntactic noise experienced by novice developers.
 
 ## Purpose
+Since the adoption of Python in introductory courses, the focus has shifted toward "ideas over syntax." However, as curricula expand to web development, the trade-offs between different types of explicitness require rethinking.
 
-Ruby and Python promote different styles of writing and organizing code:
+This project argues that the choice of framework significantly alters the learning curve. I compare three distinct approaches:
+1. Syntactic Expressiveness (Ruby / Sinatra): Focuses on human-centered design and conciseness via Domain Specific Languages (DSL).
+2. Semantic Clarity (Python / Flask): Prioritizes explicit structure and readability ("There should be one obvious way to do it").
+3. Structural Clarity (JavaScript / Express.js): Introduces C-style syntax and event-driven architecture, common in modern full-stack development.
 
-- Ruby often emphasizes expressiveness and concise syntax.
-- Python prioritizes clarity and explicit structure.
+## The Frameworks
+I utilize "microframeworks" to isolate the language features from the heavy abstractions found in full-stack tools like Rails or Django.
 
-To compare these differences in a practical setting, the project uses two lightweight web frameworks:
-
-- **Sinatra (Ruby)**
-- **Flask (Python)**
-
-Microframeworks keep the focus on the languages themselves, without the additional conventions and abstractions found in larger frameworks.
+| **Language**   | **Framework**  | **Key Characteristic** | **Philosophy**                                                                        |
+| -------------- | -------------- | ---------------------- | ------------------------------------------------------------------------------------- |
+| **Ruby**       | **Sinatra**    | **Expressiveness**     | Uses metaprogramming to treat HTTP handling as a DSL, minimizing boilerplate.         |
+| **Python**     | **Flask**      | **Explicitness**       | Treats HTTP handling as explicit function decorators and clearly defined imports.     |
+| **JavaScript** | **Express.js** | **Structure**          | Uses C-style syntax (braces, semicolons) and callbacks/promises for request handling. |
 
 ## What the Project Examines
 
-By implementing the same small “To-Do List” web application in both stacks, the project compares:
+By implementing the exact same "To-Do List" application in all three stacks, this project evaluates:
 
-1. **Readability**  
-   How easy it is to follow the logic in each version.
+1. Syntactic Noise & Boilerplate
+How much code is required just to make the app "work" (imports, server setup, bracket nesting) versus code that actually describes the business logic.
 
-2. **Expressiveness vs. Explicitness**  
-   Where the code is compact and where it requires more explicit steps.
+2. Request Routing & Processing
+   * Sinatra: Matches routes via DSL blocks (e.g., get '/' do).
+   * Flask: Matches routes via decorators (e.g., @app.route('/')).
+   * Express: Matches routes via chained methods and callbacks (e.g., app.get('/', (req, res) => { ... })).
 
-3. **Amount of Structural Overhead**  
-   How much setup or boilerplate is needed before the app becomes functional.
+3. Server-Side Rendering (SSR) & Database Interaction
+How the languages handle templating and data persistence, and which approach allows novices to most intuitively represent these concepts.
 
-## Why Sinatra and Flask
-
-Sinatra and Flask provide only minimal tools: routing, basic request handling, and simple templates or JSON responses.  
-This makes it easier to observe the underlying language features directly, without the influence of full-stack frameworks like Rails or Django.
-
-## Example Task: To-Do List App
-
-Both versions implement:
-
-- listing tasks  
-- creating new tasks  
-- updating task status  
-
-The goal is comparison, not building a production-level application. And this project is not a formal research paper.
-
+## Implementation: To-Do List App
+To ensure a fair comparison, all three implementations cover the same scope without production-level complexity:
+* Listing tasks (Read)
+* Creating new tasks (Create)
+* Updating task status (Update)
