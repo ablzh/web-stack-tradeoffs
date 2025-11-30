@@ -13,7 +13,7 @@
             <%= task.title %>
           </span>
           <form action="/toggle/<%= task.id %>" method="post" style="display:inline">
-            <button><%= task.completed ? 'Return' : 'Done' %></button>
+            <button><%= task.completed ? 'Undo' : 'Done' %></button>
           </form>
           <form action="/delete/<%= task.id %>" method="post" style="display:inline">
             <button>X</button>
