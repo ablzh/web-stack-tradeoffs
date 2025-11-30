@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Ruby To-Do</h1>
+    <form action="/add" method="post">
+      <input type="text" name="title" required>
+      <button type="submit">Add</button>
+    </form>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li style="margin: 10px 0;">
+          <span style="<%= 'text-decoration: line-through' if task.completed %>">
+            <%= task.title %>
+          </span>
+          <form action="/toggle/<%= task.id %>" method="post" style="display:inline">
+            <button><%= task.completed ? 'Return' : 'Done' %></button>
+          </form>
+          <form action="/delete/<%= task.id %>" method="post" style="display:inline">
+            <button>X</button>
+          </form>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>
