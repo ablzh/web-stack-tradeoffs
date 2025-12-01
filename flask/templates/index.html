@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Python To-Do</h1>
+
+  <form action="/add" method="post">
+    <input type="text" name="title" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    {% for task in tasks %}
+      <li style="margin: 10px 0;">
+        <span style="{{ 'text-decoration: line-through' if task.completed else '' }}">
+          {{ task.title }}
+        </span>
+
+        <form action="{{ url_for('toggle', id=task.id) }}" method="post" style="display:inline">
+          <button>{{ 'Undo' if task.completed else 'Done' }}</button>
+        </form>
+        
+        <form action="{{ url_for('delete', id=task.id) }}" method="post" style="display:inline">
+          <button>X</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
