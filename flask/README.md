@@ -3,5 +3,5 @@
 2. . .venv/bin/activate
 ## Install
 * pip install flask flask-sqlalchemy
-## Create requirements.txt
-* pip freeze > requirements.txt
+## Run
+* python app.py
