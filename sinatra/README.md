@@ -2,7 +2,7 @@
 1. bundle init
 2. bundle add sinatra sequel sqlite3 rackup puma
 ## Run
-1. bundle exec ruby app.rb
+* bundle exec ruby app.rb
 
 ## What is what
 | **Gem**     | **Role**          | **Description**                                                                    |
