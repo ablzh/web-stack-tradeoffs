@@ -35,10 +35,9 @@ const Task = sequelize.define('Task', {
 
 // 3. Database synchronization (table creation)
 // IIFE (Immediately Invoked Function Expression) for async code
-(async () => {
-  await sequelize.sync();
+sequelize.sync().then(() => {
   console.log("Database synced");
-})();
+});
 
 // --- Routes ---
 
